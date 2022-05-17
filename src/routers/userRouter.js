@@ -1,26 +1,26 @@
 import express from "express";
-
 const router = express.Router();
 
-// create user
+router.all("/", (req, res, next) => {
+  console.log("router got hit");
+  next();
+});
+
+// get user
 router.get("/", (req, res) => {
-  res.json({
-    message: "get method",
-  });
+  res.send("get user");
+});
+
+// register user
+router.post("/", (req, res) => {
+  console.log(req.body);
+  res.send("register user");
 });
 
 // login user
-router.post("/", (req, res) => {
-  res.json({
-    message: "post method",
-  });
-});
-
-// delete user
-router.delete("/", (req, res) => {
-  res.json({
-    message: "delete method",
-  });
+router.post("/login", (req, res) => {
+  console.log(req.body);
+  res.json("login user");
 });
 
 export default router;
