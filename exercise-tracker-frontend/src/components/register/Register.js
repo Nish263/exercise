@@ -1,13 +1,17 @@
 import React from "react";
-import { Form, Button, Row } from "react-bootstrap";
+import { Row, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const Login = () => {
+export const Register = () => {
   return (
     <Row className="login-comp mt-5 py-5">
       <Form>
-        <h3> Welcome to Exercise Tracker </h3>
+        <h3> Get Registered here </h3>
         <hr />
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Full Name</Form.Label>
+          <Form.Control type="name" placeholder="Enter full name" />
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
@@ -16,11 +20,12 @@ export const Login = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Login
+        <Button variant="success" type="submit">
+          Register
         </Button>
         <div className="text-end">
-          <Link to="/register"> Register here</Link>
+          already have a account?
+          <Link to="/"> Login Here</Link>
         </div>
       </Form>
     </Row>
