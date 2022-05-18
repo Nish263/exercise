@@ -1,5 +1,5 @@
 import express from "express";
-import { insertUser } from "../model/userModel/User.Model.js";
+import { insertUser, findUser } from "../model/userModel/User.Model.js";
 const router = express.Router();
 
 router.all("/", (req, res, next) => {
@@ -40,9 +40,27 @@ router.post("/", async (req, res) => {
 });
 
 // login user
-router.post("/login", (req, res) => {
-  console.log(req.body);
-  res.json("login user");
+router.post("/login", async (req, res) => {
+  try {
+    const user = await findUser(req.body);
+
+    user?._id
+      ? res.json({
+          status: " success",
+          user,
+        })
+      : res.json({
+          status: "error",
+          message: "Login failed, Please try again later",
+        });
+    console.log(user);
+  } catch (error) {
+    console.log(error);
+    res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
 });
 
 export default router;
