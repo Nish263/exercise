@@ -8,9 +8,12 @@ export const postRegister = (frmDt) => {
     return axios.post(userApi, frmDt);
     // console.log(data);
   } catch (error) {
-    return {
+    const data = {
       status: "error",
       message: error.message,
+    };
+    return {
+      data,
     };
   }
 };

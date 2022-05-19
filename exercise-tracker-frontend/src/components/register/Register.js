@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Form, Button } from "react-bootstrap";
+import { Row, Form, Button, Spinner, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { postRegister } from "../../helper/axiosHelper.js";
 
@@ -11,7 +11,8 @@ const initialState = {
 
 export const Register = () => {
   const [frmDt, setFormDt] = useState({ initialState });
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [res, setRes] = useState({});
   const handleOnChange = (e) => {
     const { value, name } = e.target;
 
@@ -23,9 +24,10 @@ export const Register = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     const { data } = await postRegister(frmDt);
-    console.log(data);
+    setRes(data);
+    setIsLoading(false);
   };
 
   return (
@@ -33,6 +35,12 @@ export const Register = () => {
       <Form onSubmit={handleOnSubmit}>
         <h3> Get Registered here </h3>
         <hr />
+        {isLoading && <Spinner animation="border" variant="primary" />}
+        {res.message && (
+          <Alert variant={res.status === "success" ? "success" : "danger"}>
+            {res.message}
+          </Alert>
+        )}
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Full Name</Form.Label>
           <Form.Control
