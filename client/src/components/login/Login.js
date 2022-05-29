@@ -4,11 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { postLogin } from "../../helper/axiosHelper";
 
 export const Login = () => {
+  const navigate = useNavigate();
   const emailRef = useRef("");
   const passwordRef = useRef("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  // const [error, setError] = useState("");
+  // const [loading, setLoading] = useState(false);
 
   const handleOnSubmit = async () => {
     const email = emailRef.current.value;
@@ -17,27 +17,26 @@ export const Login = () => {
     if (!email || !password) {
       return alert("Please enter the email and password");
     }
-    setLoading(true);
+    // setLoading(true);
     const { data } = await postLogin({ email, password });
-    setLoading(false);
+    // setLoading(false);
     console.log(data);
 
     if (data.status === "success") {
       const { name, email, _id } = data.user;
-      sessionStorage.setItem("user", JSON.stringify({ name, email, _id }));
+      sessionStorage.setItem("member", JSON.stringify({ name, email, _id }));
       navigate("/dashboard");
       return;
       // if logging success store user data in session storage and redirect to dashboard else show error message
     }
-    setError(data.message);
   };
   return (
     <Row className="login-comp mt-5 py-5">
       <Form>
         <h3> Welcome to Exercise Tracker </h3>
         <hr />
-        {loading && <Spinner animation="border" variant="primary" />}
-        {error && <Alert variant="danger">{error}</Alert>}
+        {/* {loading && <Spinner animation="border" variant="primary" />}
+        {error && <Alert variant="danger">{error}</Alert>} */}
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>

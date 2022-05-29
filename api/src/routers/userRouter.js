@@ -20,8 +20,8 @@ router.post("/", async (req, res) => {
 
     result?._id
       ? res.json({
-          statsu: "success",
-          message: "User registration successfull",
+          status: "success",
+          message: "User registration successfull, You may login now",
         })
       : res.json({
           status: "error",
@@ -53,7 +53,6 @@ router.post("/login", async (req, res) => {
           status: "error",
           message: "Login failed, Please try again later",
         });
-    console.log(user);
   } catch (error) {
     console.log(error);
     res.json({
