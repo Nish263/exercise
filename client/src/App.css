@@ -10,7 +10,19 @@
 
 .login-comp form {
   width: 500px;
-  background: rgba(246, 179, 55, 0.689);
+  background-color: rgb(202, 232, 241);
   padding: 2rem;
   border-radius: 10px;
+}
+
+.main-form {
+  background-color: rgb(202, 232, 241);
+  padding: 1rem;
+}
+
+.main-table {
+  /* background-color: rgb(240, 114, 114); */
+  padding: 2rem;
+  margin-top: 2rem;
+  border-radius: 25px;
 }
