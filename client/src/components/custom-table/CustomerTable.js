@@ -1,15 +1,26 @@
 import React from "react";
-import { ListGroup } from "react-bootstrap";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
 
 export const CustomerTable = () => {
   return (
-    <div className="main-table">
+    <div className="main-table fs-4">
       <ListGroup>
-        <ListGroup.Item>Cras justo odio</ListGroup.Item>
-        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-        <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-        <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+        <ListGroupItem>
+          <span className="exercise">Exercise </span>
+          <span className="time"> Time Spent</span>
+        </ListGroupItem>
+        <ListGroupItem>
+          <span className="exercise">Exercise </span>
+          <span className="time"> Time Spent</span>
+        </ListGroupItem>
+        <ListGroupItem>
+          <span className="exercise">Exercise </span>
+          <span className="time"> Time Spent</span>
+        </ListGroupItem>
+        <ListGroupItem>
+          <span className="text-end">Total</span>
+          <span className="text-end">Total</span>
+        </ListGroupItem>
       </ListGroup>
     </div>
   );

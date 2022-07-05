@@ -17,6 +17,7 @@ export const Dashboard = () => {
     <MainLayout>
       <div>
         <ExerciseForm />
+        <hr />
         <CustomerTable />
       </div>
     </MainLayout>

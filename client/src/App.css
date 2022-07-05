@@ -21,8 +21,13 @@
 }
 
 .main-table {
-  /* background-color: rgb(240, 114, 114); */
+  /* background-color: rgb(202, 232, 241); */
   padding: 2rem;
   margin-top: 2rem;
   border-radius: 25px;
+}
+
+.list-group .list-group-item {
+  display: flex;
+  justify-content: space-between;
 }
