@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const ExerciseSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
@@ -12,6 +12,11 @@ const ExerciseSchema = new mongoose.Schema(
     },
     date: {
       type: Date,
+      required: true,
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
   },

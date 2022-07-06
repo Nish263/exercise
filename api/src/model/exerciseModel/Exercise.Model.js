@@ -1,16 +1,16 @@
 import ExerciseSchema from "./Exercise.Schema.js";
 
-// insert user
-export const icreateExercise = (obj) => {
+// insert exercise
+export const createExercise = (expense) => {
   return ExerciseSchema.create(expense);
 };
 
-// get user
-export const getExercises = (_id) => {
-  return ExerciseSchema.findById(_id);
+// get exercise
+export const getExercises = (filter) => {
+  return ExerciseSchema.find(filter);
 };
 
-// deleteuser
+// delete exercise
 export const deleteExercise = (filter) => {
   return ExerciseSchema.findOneAndDelete(filter);
 };

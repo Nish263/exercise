@@ -1,6 +1,6 @@
 import express from "express";
-import { insertExercise } from "../model/exerciseModel/Exercise.Model.js";
-import { insertUser, findUser } from "../model/userModel/User.Model.js";
+import { createExercise } from "../model/exerciseModel/Exercise.Model.js";
+
 const router = express.Router();
 
 router.all("/", (req, res, next) => {
@@ -10,14 +10,16 @@ router.all("/", (req, res, next) => {
 
 // get user
 router.get("/", (req, res) => {
-  res.send("Welcome to the exercise Api");
+  res.json({
+    message: "Welcome to the exercise Api",
+  });
 });
 
-// register user
+// create user
 router.post("/", async (req, res) => {
   try {
-    const { authorization } = req.body;
-    const result = await insertExercise(req.body);
+    const { authorization } = req.headers;
+    const result = await createExercise({ ...req.body, userId: authorization });
 
     result?._id
       ? res.json({
@@ -29,38 +31,20 @@ router.post("/", async (req, res) => {
           message: "Failed to add expenses",
         });
   } catch (error) {
-    let message = error.message;
-    if (error.message.includes("duplicate key error collection")) {
-      message = "This email had been already registered";
-    }
-    res.json({
-      status: "error",
-      message,
-    });
-  }
-});
-
-// login user
-router.post("/login", async (req, res) => {
-  try {
-    const user = await findUser(req.body);
-
-    user?._id
-      ? res.json({
-          status: "success",
-          user,
-        })
-      : res.json({
-          status: "error",
-          message: "Login failed, Please try again later",
-        });
-  } catch (error) {
     console.log(error);
     res.json({
       status: "error",
       message: error.message,
     });
   }
+});
+
+// login user
+router.delete("/", (req, res) => {
+  res.json({
+    status: "success",
+    user,
+  });
 });
 
 export default router;
