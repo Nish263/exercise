@@ -24,7 +24,7 @@ export const Login = () => {
 
     if (data.status === "success") {
       const { name, email, _id } = data.user;
-      sessionStorage.setItem("member", JSON.stringify({ name, email, _id }));
+      sessionStorage.setItem("user", JSON.stringify({ name, email, _id }));
       navigate("/dashboard");
       return;
       // if logging success store user data in session storage and redirect to dashboard else show error message

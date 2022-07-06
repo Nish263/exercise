@@ -16,8 +16,10 @@ app.use(morgan("tiny"));
 
 // api here
 import userRouter from "./src/routers/userRouter.js";
+import exerciseRouter from "./src/routers/exerciseRouter.js";
 
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/exercises", exerciseRouter);
 
 app.get("*", (req, res) => {
   res.status(404).send("<h1> 404 NOT FOUND </h1>");

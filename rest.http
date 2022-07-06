@@ -25,3 +25,20 @@ Content-Type: application/json
 }
 
 #---------exercise api--------
+
+### get expenses
+GET http://localhost:8000/api/v1/exercises
+
+###post expenses
+POST http://localhost:8000/api/v1/exercises
+Content-Type: application/json
+Authorization: 62bbef4f801a49c5e30742cd
+
+{
+    "title":"leg exercise",
+    "hour":14,
+    "date":"2019-10-20"
+}
+
+### delete expenses
+DELETE  http://localhost:8000/api/v1/exercises

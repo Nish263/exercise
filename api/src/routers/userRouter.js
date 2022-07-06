@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
 
     user?._id
       ? res.json({
-          status: " success",
+          status: "success",
           user,
         })
       : res.json({
